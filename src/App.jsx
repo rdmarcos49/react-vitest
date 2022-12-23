@@ -8,7 +8,7 @@ const CHALLENGES = {
 }
 
 export const App = () => {
-  const [currentIndexChallenge, setCurrentIndexChallenge] = useState(1)
+  const [currentIndexChallenge, setCurrentIndexChallenge] = useState(2)
   const handlePrev = () => {
     setCurrentIndexChallenge(curr => curr - 1)
   }
