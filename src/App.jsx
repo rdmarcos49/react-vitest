@@ -7,12 +7,6 @@ const CHALLENGES = {
   2: Second
 }
 
-const PROPS = {
-  1: {
-    gifts: ['cat', 'game', 'socks']
-  }
-}
-
 export const App = () => {
   const [currentIndexChallenge, setCurrentIndexChallenge] = useState(1)
   const handlePrev = () => {
@@ -23,22 +17,23 @@ export const App = () => {
   }
 
   const Component = CHALLENGES[currentIndexChallenge]
-  const props = PROPS[currentIndexChallenge]
 
   return (
     <main>
       <section>
-        <button disabled={currentIndexChallenge === 1} onClick={handlePrev}>
-          Prev challenge
-        </button>
-        <button disabled={currentIndexChallenge === Object.keys(CHALLENGES).length} onClick={handleNext}>
-          Next challenge
-        </button>
-        <span> Challenge #{currentIndexChallenge}</span>
+        <div className='grid' style={{ gridTemplateColumns: '1fr 1fr' }}>
+          <button disabled={currentIndexChallenge === 1} onClick={handlePrev}>
+            Prev challenge
+          </button>
+          <button disabled={currentIndexChallenge === Object.keys(CHALLENGES).length} onClick={handleNext}>
+            Next challenge
+          </button>
+        </div>
+        <span> AdventJS: Challenge #{currentIndexChallenge}</span>
       </section>
 
       <section>
-        <Component {...props} />
+        <Component />
       </section>
     </main>
   )

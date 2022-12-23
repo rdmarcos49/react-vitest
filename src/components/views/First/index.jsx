@@ -1,11 +1,20 @@
-import { useEffect, useState } from "react"
+import { useRef, useState } from "react"
 
-export const First = ({ gifts = [] }) => {
+export const First = () => {
   const [giftsToRender, setGiftsToRender] = useState([])
+  const inputRef = useRef(null)
 
-  useEffect(() => {
-    setGiftsToRender(wrapping(gifts))
-  }, [gifts])
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const giftsToWrap = inputRef.current.value.split(' ').filter(el => el !== '')
+    const wrappedGifts = wrapping(giftsToWrap)
+    setGiftsToRender(wrappedGifts)
+  }
+
+  const handleReset = () => {
+    setGiftsToRender([])
+    inputRef.current.value = ''
+  }
 
   function wrapping(target) {
     const LINE_BREAK = 'N'
@@ -25,12 +34,23 @@ export const First = ({ gifts = [] }) => {
   }
 
   return (
-    <section>
+    <article>
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder='Type the words you want to wrap...'
+          defaultValue={'cat game socks'}
+          ref={inputRef}
+        />
+        <div className='grid' style={{ gridTemplateColumns: '1fr 1fr' }}>
+          <button> Wrap gifts! </button>
+          <button onClick={handleReset}> Reset </button>
+        </div>
+      </form>
       <ul>
         {giftsToRender.map(gift => (
           <li key={gift}> {gift} </li>
         ))}
       </ul>
-    </section>
+    </article>
   )
 }
