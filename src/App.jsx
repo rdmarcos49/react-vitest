@@ -3,8 +3,14 @@ import { First } from './components/views/First'
 import { Second } from './components/views/Second'
 
 const CHALLENGES = {
-  1: <First />,
-  2: <Second />
+  1: First,
+  2: Second
+}
+
+const PROPS = {
+  1: {
+    gifts: ['cat', 'game', 'socks']
+  }
 }
 
 export const App = () => {
@@ -15,6 +21,10 @@ export const App = () => {
   const handleNext = () => {
     setCurrentIndexChallenge(curr => curr + 1)
   }
+
+  const Component = CHALLENGES[currentIndexChallenge]
+  const props = PROPS[currentIndexChallenge]
+
   return (
     <main>
       <section>
@@ -28,7 +38,7 @@ export const App = () => {
       </section>
 
       <section>
-        {CHALLENGES[currentIndexChallenge]}
+        <Component {...props} />
       </section>
     </main>
   )

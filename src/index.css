@@ -1,5 +1,7 @@
+html, body {
+  min-height: 100vh;
+}
+
 body {
-  background-color: #202020;
-  color: aliceblue;
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  padding: 24px 36px;
 }
