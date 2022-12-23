@@ -38,7 +38,7 @@ export const First = () => {
       <form onSubmit={handleSubmit}>
         <input
           placeholder='Type the words you want to wrap...'
-          defaultValue={'cat game socks'}
+          defaultValue={'Example words'}
           ref={inputRef}
         />
         <div className='grid' style={{ gridTemplateColumns: '1fr 1fr' }}>
